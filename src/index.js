@@ -1,7 +1,18 @@
+require('./models/User')
+// Required as such since it is only expected to be defined once
 const express = require('express')
 const mongoose = require('mongoose')
+const bodyParser = require('body-parser');
 const colors = require('colors')
+
+const authRoutes = require('./routes/authRoutes')
+
 const app = express();
+
+// Parses json of body property from incoming reqs before passing it to the req handlers
+app.use(bodyParser.json());
+// Associates all req handlers from the router with our main express App
+app.use(authRoutes); 
 
 const mongoUri = 'mongodb+srv://MovementTrk:Fsociety2021@cluster0.z4ouw.mongodb.net/MovementTrk?retryWrites=true&w=majority'
 // Connects to mongoDB
