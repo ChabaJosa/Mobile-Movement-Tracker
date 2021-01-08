@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const colors = require('colors')
 
 const authRoutes = require('./routes/authRoutes')
+const requireAuth = require('./middlewares/requireAuth')
 
 const app = express();
 
@@ -30,8 +31,9 @@ mongoose.connection.on('error', (err) => {
     console.log('Ugly error incoming!'.brightRed.bold, err)
 })
 // Landing request on localhost:3000 or whichever port
-app.get('/', (req, res) => {
-    res.send('Hi there!')
+// requireAuth checks users
+app.get('/', requireAuth, (req, res) => {
+    res.send(`Your email is: ${req.user.email}`)
 });
 
 app.listen(3000, () => {
