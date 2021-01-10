@@ -14,7 +14,7 @@ router.post("/signup", async (req, res) => {
     res.send({token: token});
 
   } catch (err) {
-    // 422: Invalid data in the req
+    // 422: Invalid data in request
     res.status(422).send(err.message);
   }
 });
