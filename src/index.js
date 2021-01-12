@@ -1,11 +1,13 @@
 require('./models/User')
-// Required as such since it is only expected to be defined once
+require('./models/Track')
+// ^ Get called at least once
 const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser');
 const colors = require('colors')
 
 const authRoutes = require('./routes/authRoutes')
+const trackRoutes = require('./routes/trackRoutes')
 const requireAuth = require('./middlewares/requireAuth')
 
 const app = express();
@@ -14,6 +16,7 @@ const app = express();
 app.use(bodyParser.json());
 // Associates all req handlers from the router with our main express App
 app.use(authRoutes); 
+app.use(trackRoutes)
 
 const mongoUri = 'mongodb+srv://MovementTrk:Fsociety2021@cluster0.z4ouw.mongodb.net/MovementTrk?retryWrites=true&w=majority'
 // Connects to mongoDB
