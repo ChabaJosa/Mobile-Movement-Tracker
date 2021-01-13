@@ -1,0 +1,16 @@
+{
+  "name": "NewTrackG",
+  "locations": [
+    {
+      "timestamp": 555555555,
+      "coords": {
+        "latitude": 100,
+        "longitude": 100,
+        "altitude": 100,
+        "accuracy": 100,
+        "heading": 100,
+        "speed": 100
+      }
+    }
+  ]
+}
